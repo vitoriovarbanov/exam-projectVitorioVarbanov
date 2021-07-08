@@ -1,0 +1,253 @@
+.welcome-section {
+  color: white;
+  min-width: 98vw;
+  min-height: 93.5vh;
+  /* background-color: #00796b; */
+  background-image: url(../../../assets/home-top/backgrounds/home1920.svg);
+  display: flex;
+  align-items: center;
+  /* border: 2px solid yellow; */
+  flex-direction: row;
+    /* Background image is centered vertically and horizontally at all times */
+    background-position: center center;
+    /* Background image doesn't tile */
+    background-repeat: no-repeat;
+    /* Background image is fixed in the viewport so that it doesn't move when
+     the content's height is greater than the image's height */
+    background-attachment: fixed;
+     /* This is what makes the background image rescale based
+     on the container's size */
+     background-size: cover;
+     /* Set a background color that will be displayed
+     while the background image is loading */
+    /* background-color: #464646;
+    font-size: 16px; */
+}
+
+h1 {
+  font-size: 4em;
+  line-height: 1em;
+  margin-bottom: 10px;
+}
+
+svg {
+  width: 80%;
+}
+
+.left-section {
+  /* border: 1px solid red; */
+  width: 33%;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.header-container button {
+  margin-right: 75px;
+}
+
+.right-section {
+  /* border: 1px solid pink; */
+  margin-left: 50px;
+  margin-top: -100px;
+  width: 67%;
+  height: 100%;
+}
+
+.transparent-container {
+  /* border: 2px solid red; */
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 340px;
+  height: 450px;
+}
+
+.image1 {
+  border-radius: 0 45px 25px 0;
+  position: relative;
+  top: 0;
+  left: 50px;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+
+.image2 {
+  border-radius: 0 45px 25px 0;
+  position: absolute;
+  top: 50px;
+  left: 250px;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  z-index: 0;
+}
+
+.social-network-tab {
+  position: absolute;
+  right: 20px;
+  top: 200px;
+}
+
+.social-network-tab span {
+  padding-top: 10px;
+}
+
+/* .wrapper{
+  border: 0.2px solid red;
+  border-radius: 20px;
+}
+
+.social-network-tab .wrapper:hover{
+  width: 200px;
+} */
+
+/******** MEDIA QUERIES *******/
+
+@media screen and (min-width: 1600px) {
+  .transparent-container {
+    width: 420px;
+    height: 620px;
+  }
+  .image2 {
+    left: 400px;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .transparent-container {
+    width: 310px;
+    height: 430px;
+  }
+  /* .welcome-section{
+    background-image: url(../../../assets/home-top/backgrounds/1440home.svg);
+  } */
+}
+
+@media screen and (max-width: 900px) {
+  .transparent-container {
+    width: 220px;
+    height: 310px;
+  }
+  .image2 {
+    left: 200px;
+  }
+  .welcome-section{
+    background-image: url(../../../assets/home-top/backgrounds/1024home.svg);
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .welcome-section {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  h1 {
+    font-size: 2.7em;
+  }
+  .left-section {
+    width: 100%;
+  }
+  .right-section {
+    margin-left: 0px;
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .transparent-container {
+    width: 400px;
+    height: 270px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .image1 {
+    position: unset;
+    left: 0px;
+    border-radius: 25px;
+    width: 160px;
+    height: 220px;
+  }
+  .image2 {
+    position: unset;
+    top: 0px;
+    border-radius: 25px;
+    width: 160px;
+    height: 220px;
+  }
+  .social-network-tab {
+    right: 7px;
+    top: 100px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .right-section {
+    margin-top: 40px;
+  }
+  .transparent-container {
+    width: 400px;
+    height: 270px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .social-network-tab {
+    position: unset;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 240px;
+    justify-content: space-evenly;
+    margin-top: -30px;
+    /* border: 1px solid red; */
+  }
+}
+
+@media screen and (max-width: 351px) {
+  /* .left-section {
+    width: 66%;
+  } */
+  .transparent-container {
+    width: 120px;
+    height: 160px;
+  }
+  .image1 {
+    width: 140px;
+    height: 190px;
+  }
+  .image2 {
+    width: 140px;
+    height: 190px;
+  }
+  .social-network-tab {
+    position: unset;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100px;
+    justify-content: space-evenly;
+    /* border: 1px solid red; */
+  }
+}
+
+@media screen and (max-width: 420px) and (min-height: 680px){
+  .transparent-container {
+    margin-top: 50px;
+    width: 400px;
+    height: 270px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .image1 {
+    width: 160px;
+    height: 220px;
+  }
+  .image2 {
+    width: 160px;
+    height: 220px;
+  }
+}
