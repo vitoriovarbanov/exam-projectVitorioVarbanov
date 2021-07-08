@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; font-size: 16px;}
+body { margin: 0; font-size: 16px;}
+
+@import '~@angular/material/theming';
+@import './theme.scss';
+
+.accent-color {
+  color: mat-color($my-custom-primary) !important;
+}
+
+* {
+  font-family: 'Bree Serif', serif;
+}
