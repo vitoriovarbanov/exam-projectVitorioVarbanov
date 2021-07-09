@@ -1,7 +1,7 @@
 .welcome-section {
   color: white;
   min-width: 98vw;
-  min-height: 93.5vh;
+  min-height: 100vh;
   /* background-color: #00796b; */
   background-image: url(../../../assets/home-top/backgrounds/home1920.svg);
   display: flex;
