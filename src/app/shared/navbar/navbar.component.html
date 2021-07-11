@@ -1,0 +1,31 @@
+<mat-toolbar color="accent">
+  <div class="example-container">
+
+    <div>
+      <button mat-icon-button class="example-icon-top" [matMenuTriggerFor]="topMenu">
+          <span class="material-icons" *ngIf='!showClose' aria-label="Menu button toggle">menu</span>
+          <span class="material-icons" *ngIf='showClose' aria-label="Close Menu">highlight_off</span>
+      </button>
+      <mat-menu #topMenu>
+        <ng-template matMenuContent>
+         <ng-container *ngIf='signedIn'>
+          <menu mat-menu-item><a mat-raised-button color="accent">Account
+          </a></menu></ng-container>
+          <menu mat-menu-item><a routerLink='shop' mat-raised-button color="accent" aria-label="Shop link">Shop</a></menu>
+          <menu mat-menu-item><a routerLink='auth/login' mat-raised-button color="accent" aria-label="Blog link">Blog</a></menu>
+          <ng-container *ngIf='!signedIn && signedIn!==null'>
+            <menu mat-menu-item><a routerLink='auth/login' mat-raised-button color="accent" aria-label="Login link">Login</a></menu>
+            <menu mat-menu-item><a routerLink='auth/register' mat-raised-button color="accent" aria-label="Register link">Register</a></menu>
+          </ng-container>
+          <ng-container *ngIf='signedIn'>
+            <menu mat-menu-item><a routerLink='/' mat-raised-button color="accent" aria-label="Register link" (click)='logoutUser()'>Log Out</a></menu>
+          </ng-container>
+        </ng-template>
+      </mat-menu>
+      <mat-icon class='favourite' color="primary">favorite</mat-icon>
+      <a routerLink='/'><span style="margin-left: 6px; font-size: 25px;">Web Health Store</span></a>
+    </div>
+
+
+  </div>
+</mat-toolbar>
