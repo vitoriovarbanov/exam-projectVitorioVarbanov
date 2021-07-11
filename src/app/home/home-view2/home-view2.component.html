@@ -7,17 +7,8 @@
       <mat-tab label="Top products">
         <div class="container-images">
           <mat-card *ngFor='let test of displayedViews; let i = index'><img mat-card-image src="{{test.src}}" alt="">{{test.text}}</mat-card>
-          <!-- <mat-card><img mat-card-image src="../../../assets/health2.jpg" alt=""></mat-card>
-          <mat-card><img mat-card-image src="../../../assets/health3.jpg" alt=""></mat-card>
-          <mat-card><img mat-card-image src="../../../assets/health4.jpg" alt=""></mat-card>
-          <mat-card><img mat-card-image src="../../../assets/health5.jpg" alt=""></mat-card> -->
         </div>
       </mat-tab>
-    <mat-tab label="We recommend" class="mat-display-3">
-      <div class="example-large-box mat-elevation-z4">
-        We recommend
-      </div>
-    </mat-tab>
   </mat-tab-group>
 </div>
 </div>

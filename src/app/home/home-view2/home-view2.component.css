@@ -1,0 +1,123 @@
+.top-products{
+  /* background-color: #00796b; */
+  background-image: url(../../../assets/home-top/backgrounds/home1920.svg);
+  /* Background image is centered vertically and horizontally at all times */
+  background-position: center center;
+  /* Background image doesn't tile */
+  background-repeat: no-repeat;
+  /* Background image is fixed in the viewport so that it doesn't move when
+   the content's height is greater than the image's height */
+  background-attachment: fixed;
+   /* This is what makes the background image rescale based
+   on the container's size */
+   background-size: cover;
+   /* Set a background color that will be displayed
+   while the background image is loading */
+  /* background-color: #464646;
+  font-size: 16px; */
+}
+
+.header-container{
+  width: 75%;
+  margin: 0 auto;
+}
+
+h2{
+  text-align: center;
+  font-size: 2rem;
+}
+
+h2:before,
+h2:after {
+  background-color: #000;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 20%;
+}
+
+h2:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+
+h2:after {
+  left: 0.5em;
+  margin-right: -50%;
+}
+
+.section-products{
+  margin-top: 20px;
+}
+.container-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 95%;
+  margin: 16px;
+  border-radius: 8px;
+}
+
+.container-images img{
+  opacity: 0.5;
+  -webkit-animation: slide 0.5s forwards;
+  -webkit-animation-delay: 1s;
+  animation: slide 0.5s forwards;
+  animation-delay: 1s;
+  animation-iteration-count: 5;
+}
+
+@-webkit-keyframes slide {
+  100% { opacity: 1; }
+}
+
+@keyframes slide {
+  100% { opacity: 1; }
+}
+
+.example-small-box {
+  height: 100%;
+  width: 97%;
+}
+
+::ng-deep .mat-tab-group {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.mat-card{
+  width: 300px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.example-large-box {
+  height: 250px;
+  width: 150px;
+}
+
+@media screen and (max-width: 900px) {
+  .top-products{
+    background-image: url(../../../assets/home-top/backgrounds/1024home.svg);
+  }
+}
+
+@media screen and (max-width: 720px) {
+  h2{
+    font-size: 1.5em;
+  }
+}
+
+
+@media screen and (max-width: 440px) {
+  .mat-card img{
+    width: 100%
+  }
+  h2:before,
+  h2:after {
+  width: 5%;
+}
+}
+
