@@ -1,5 +1,5 @@
 # exam-projectVitorioVarbanov
- This is project for my exam at SoftUni August 2021
+ Angular project for my exam at SoftUni August 2021
  
  This is an e-commerce shop that is focused on offering and providing products related to a healthy lifestyle.
  There are different categories that you can select from, as well as top products.
