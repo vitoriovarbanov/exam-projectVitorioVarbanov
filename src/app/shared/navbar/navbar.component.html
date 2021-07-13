@@ -26,6 +26,31 @@
       <a routerLink='/'><span style="margin-left: 6px; font-size: 25px;">Web Health Store</span></a>
     </div>
 
+    <div class="right-menu">
+        <a class="example-spacer-right" routerLink='shop' mat-raised-button color="primary" aria-label="Shop link">Shop</a>
+        <ng-template [ngIf]='!signedIn'>
+          <button class="example-spacer-right" type="button" mat-raised-button color="primary" [matMenuTriggerFor]="settingsMenu" matTooltip="Login/Register">Get started</button>
+          <mat-menu #settingsMenu>
+          <ng-template matMenuContent>
+            <menu mat-menu-item><a routerLink='auth/login' mat-raised-button color="accent" aria-label="Login link">Login</a></menu>
+            <menu mat-menu-item><a routerLink='auth/register' mat-raised-button color="accent" aria-label="Register link">Register</a></menu>
+          </ng-template>
+        </mat-menu>
+        </ng-template>
+        <ng-container *ngIf='signedIn'>
+          <button class="example-spacer-right" type="button" mat-raised-button color="primary" [matMenuTriggerFor]="accountMenu" matTooltip="Profile/Log Out">Account
+            <ng-container *ngIf='photo'>
+              <img  width="25px" height="25px" [src]="photo | safe" style="border-radius: 15px;">
+            </ng-container>
+          </button>
+          <mat-menu #accountMenu>
+          <ng-template matMenuContent>
+            <menu mat-menu-item><a routerLink='/' mat-raised-button color="accent" aria-label="Login link">Profile</a></menu>
+            <menu mat-menu-item><a routerLink='/' mat-raised-button color="accent" aria-label="Register link" (click)='logoutUser()'>Log Out</a></menu>
+          </ng-template>
+        </mat-menu>
+        </ng-container>
+    </div>
 
   </div>
 </mat-toolbar>
