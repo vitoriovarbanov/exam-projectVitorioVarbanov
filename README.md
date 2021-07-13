@@ -3,9 +3,9 @@
  
  This is an e-commerce shop that is focused on offering and providing products related to a healthy lifestyle.
  There are different categories that you can select from, as well as top products.
- The user is able to add and remove items from his cart, see the current bill. The routes that are related to the user's cart and added items are protected with Route Guards.
+ The user is able to add and remove items from his cart, see the current bill and more. The routes that are related to the user's cart and added items are protected with Route Guards.
  
- I have followed the basic principle of Material Design for Angular. The themes, color palletes, fonts and components were selected following the guides of the documentation. The selection emphasizes the unique desing that the application offers. Another useful tool to create different quality backgrounds for each component and module is - Hiakei https://app.haikei.app/
+ I have followed the basic principles of Material Design for Angular. The themes, color palletes, fonts and components were selected following the guides of the documentation. The selection emphasizes the unique design that the application offers. Another useful tool to create different quality backgrounds for each component and module is - Hiakei https://app.haikei.app/
  
  The user is able to register with an email and password or directly via Google.
  
