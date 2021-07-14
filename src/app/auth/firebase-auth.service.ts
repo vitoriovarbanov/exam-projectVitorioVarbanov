@@ -44,6 +44,29 @@ export class FirebaseAuthService {
       .catch(err => console.log(err.message))
   }
 
+  login(email: string, password: string) {
+    return this.afAuth
+      .signInWithEmailAndPassword(email, password)
+      .then((result) => {
+        this.signedIn$.next(true)
+        console.log('Logged In!');
+        this.router.navigate(['/'])
+        return this.updateUserData(result.user, result.additionalUserInfo.isNewUser)
+      })
+      .catch(err => {
+        console.log('Something went wrong:', err.message);
+      });
+  }
+
+  logout() {
+    return this.afAuth.signOut().then(() => {
+      this.signedIn$.next(false)
+      console.log('Logged Out!');
+      localStorage.clear();
+      this.router.navigate(['/']);
+    })
+  }
+
   updateUserData({ uid, email, displayName, photoURL }: User, newUser) {
     //Sets user data to firestore on login with google/register
     const userRef: AngularFirestoreDocument<User> = this.firestoreDatabase.doc(`users/${uid}`)

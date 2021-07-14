@@ -14,8 +14,6 @@ import { HomeModule } from './home/home.module';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
-
-
 var firebaseConfig = {
   apiKey: "AIzaSyCSMVEI-JeMqnZkV0xINRC7aDOpR_zIvE4",
   authDomain: "health-web-shop.firebaseapp.com",
