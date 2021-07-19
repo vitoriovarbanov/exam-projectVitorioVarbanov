@@ -1,0 +1,33 @@
+<div class="master">
+  <mat-drawer-container class="example-container">
+    <mat-drawer-content>
+      <div class="main-content-container">
+        <div class="test">
+          <div class="mall-slide">
+            <div class="slid-content">
+                <div class="mall-show-slide fade" *ngFor="let item of Imagedata;">
+                    <img src="{{item}}" style="width:100%;">
+                </div>
+                <div class="mall-carousel-ind">
+                    <ul>
+                        <li *ngFor="let item of Imagedata; let i = index;" [class.mall-this]="startIndex - 1 === i"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div>
+          <h1 class="header-categories">Categories</h1>
+        </div>
+        <div class="images-section">
+          <div class="image-separator" *ngFor='let image of images; let i = index'>
+            <img role="presentation" src="{{image.src}}" alt="{{image.alt}}" width="300" height="360" [class.my_class] = "i%2===0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="white" fill-opacity="1" d="M0,256L18.5,261.3C36.9,267,74,277,111,250.7C147.7,224,185,160,222,165.3C258.5,171,295,245,332,261.3C369.2,277,406,235,443,218.7C480,203,517,213,554,224C590.8,235,628,245,665,234.7C701.5,224,738,192,775,202.7C812.3,213,849,267,886,272C923.1,277,960,235,997,186.7C1033.8,139,1071,85,1108,74.7C1144.6,64,1182,96,1218,133.3C1255.4,171,1292,213,1329,240C1366.2,267,1403,277,1422,282.7L1440,288L1440,320L1421.5,320C1403.1,320,1366,320,1329,320C1292.3,320,1255,320,1218,320C1181.5,320,1145,320,1108,320C1070.8,320,1034,320,997,320C960,320,923,320,886,320C849.2,320,812,320,775,320C738.5,320,702,320,665,320C627.7,320,591,320,554,320C516.9,320,480,320,443,320C406.2,320,369,320,332,320C295.4,320,258,320,222,320C184.6,320,148,320,111,320C73.8,320,37,320,18,320L0,320Z"></path></svg>
+            <a  routerLink='{{image.link}}'><button mat-stroked-button style="color: white;">{{image.text}}</button></a>
+          </div>
+        </div>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>
+
