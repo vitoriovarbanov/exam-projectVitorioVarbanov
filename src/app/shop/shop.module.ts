@@ -6,10 +6,12 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ShopHomeComponent } from './shop-home/shop-home.component';
+import { FoodBeveragesComponent } from './food-beverages/food-beverages.component';
+import { SortByPipe } from './sort-by.pipe';
 
 
 @NgModule({
-  declarations: [ShopHomeComponent],
+  declarations: [ShopHomeComponent, FoodBeveragesComponent, SortByPipe],
   imports: [
     CommonModule,
     ShopRoutingModule,
