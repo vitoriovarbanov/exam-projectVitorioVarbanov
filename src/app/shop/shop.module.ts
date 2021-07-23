@@ -8,10 +8,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ShopHomeComponent } from './shop-home/shop-home.component';
 import { FoodBeveragesComponent } from './food-beverages/food-beverages.component';
 import { SortByPipe } from './sort-by.pipe';
+import { SortExpansionPanelComponent } from './sort-expansion-panel/sort-expansion-panel.component';
 
 
 @NgModule({
-  declarations: [ShopHomeComponent, FoodBeveragesComponent, SortByPipe],
+  declarations: [ShopHomeComponent, FoodBeveragesComponent, SortByPipe, SortExpansionPanelComponent],
   imports: [
     CommonModule,
     ShopRoutingModule,

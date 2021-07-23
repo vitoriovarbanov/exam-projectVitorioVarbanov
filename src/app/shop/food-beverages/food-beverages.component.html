@@ -1,3 +1,5 @@
+<app-sort-expansion-panel (outputSortItemsEvent)='sortItems($event)'></app-sort-expansion-panel>
+
 <ng-template [ngIf]='products'>
   <mat-paginator style="background-color: #64DD17; margin: 0;" [length]="products.length" pageSize=10
   (page)="getPaginatorData($event)" [pageSizeOptions]="[10, 20, 50]"
@@ -6,6 +8,7 @@
 </ng-template>
 <mat-list>
 
+<app-sort-expansion-panel></app-sort-expansion-panel>
 
 <div class='main-content-div'>
 

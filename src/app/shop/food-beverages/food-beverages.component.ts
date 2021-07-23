@@ -19,7 +19,9 @@ export class FoodBeveragesComponent implements OnInit {
     this.srvc.getFoodBeveragesProducsts()
       .subscribe((data: FoodProducts) => {
         this.products = data
-        console.log(this.products)
+      })
+      this.srvc.productsInCart$.subscribe(data=>{
+        this.foodBeveragesInCart = data
       })
   }
 
@@ -35,6 +37,17 @@ export class FoodBeveragesComponent implements OnInit {
     this.lowValue = event.pageIndex * event.pageSize;
     this.highValue = this.lowValue + event.pageSize;
     return event;
+  }
+
+  addItemsToCart(priceOfItem,nameOfItem,productIndex) {
+    //console.log(priceOfItem)
+    this.srvc.updateCart(priceOfItem,nameOfItem,productIndex)
+    this.srvc.productsInCart$.subscribe(data=>{
+      this.foodBeveragesInCart = data
+    })
+    this.srvc.cartItemsSum$.subscribe(data=>{
+      this.sumInCart = data
+    })
   }
 
   sortItems(e) {
