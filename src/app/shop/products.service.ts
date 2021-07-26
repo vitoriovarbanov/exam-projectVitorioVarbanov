@@ -5,6 +5,7 @@ import { FoodProducts } from './models/FoodProduts';
 import { map, take } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 import firebase from 'firebase/app'
+import { SportsFitnessProducts } from './models/SportsFitnessProducts';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,13 @@ export class ProductsService {
 
   getFoodBeveragesProducsts() {
     return this.http.get<FoodProducts>('https://firestore.googleapis.com/v1/projects/health-web-shop/databases/(default)/documents/foodbeverages')
+      .pipe(map(data => {
+        return data['documents'].map(x => x['fields'])
+      }))
+  }
+
+  getSportFitnessProducts() {
+    return this.http.get<SportsFitnessProducts>('https://firestore.googleapis.com/v1/projects/health-web-shop/databases/(default)/documents/sports')
       .pipe(map(data => {
         return data['documents'].map(x => x['fields'])
       }))

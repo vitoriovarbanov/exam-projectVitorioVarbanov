@@ -1,1 +1,23 @@
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Sort By
+      </mat-panel-title>
+      <mat-panel-description>
+        {{currentSortingCriteria}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="btn-container">
+      <button mat-raised-button color="accent" (click)='sortProductItems(sortCriteriaDef)'>Default</button>
+    </div>
+    <div class="btn-container">
+      <button mat-raised-button color="accent" (click)='sortProductItems(sortCriteriaLowHigh)'>Price Low to High</button>
+    </div>
+    <div class="btn-container">
+      <button mat-raised-button color="accent" (click)='sortProductItems(sortCriteriaHighLow)'>Price High to Low</button>
+    </div>
 
+  </mat-expansion-panel>
+</mat-accordion>

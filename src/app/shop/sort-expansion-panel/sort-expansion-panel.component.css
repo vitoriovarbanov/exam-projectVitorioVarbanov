@@ -1,0 +1,21 @@
+.mat-expansion-panel{
+  background-color: #64DD17;
+}
+
+.mat-expansion-panel-header{
+ flex-direction: column;
+}
+
+.mat-expansion-panel{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-container{
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}

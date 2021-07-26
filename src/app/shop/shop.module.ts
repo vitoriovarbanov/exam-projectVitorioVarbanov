@@ -9,10 +9,12 @@ import { ShopHomeComponent } from './shop-home/shop-home.component';
 import { FoodBeveragesComponent } from './food-beverages/food-beverages.component';
 import { SortByPipe } from './sort-by.pipe';
 import { SortExpansionPanelComponent } from './sort-expansion-panel/sort-expansion-panel.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { SportsComponent } from './sports/sports.component';
 
 
 @NgModule({
-  declarations: [ShopHomeComponent, FoodBeveragesComponent, SortByPipe, SortExpansionPanelComponent],
+  declarations: [ShopHomeComponent, FoodBeveragesComponent, SortByPipe, SortExpansionPanelComponent, ShoppingCartComponent, SportsComponent],
   imports: [
     CommonModule,
     ShopRoutingModule,

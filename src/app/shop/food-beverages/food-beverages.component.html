@@ -8,9 +8,10 @@
 </ng-template>
 <mat-list>
 
-<app-sort-expansion-panel></app-sort-expansion-panel>
 
 <div class='main-content-div'>
+  <app-shopping-cart [itemsInCart]='foodBeveragesInCart' [itemsSum]='sumInCart'></app-shopping-cart>
+
 
   <section class="cards">
     <ng-template [ngIf]='products'>
