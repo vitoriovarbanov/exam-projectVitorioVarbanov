@@ -1,0 +1,54 @@
+<app-categories-navbar></app-categories-navbar>
+
+<div class="cart-background-container">
+  <div class="flex-content-container">
+    <section class="left-side-container">
+      <table mat-table [dataSource]="itemsInCart | async" class="mat-elevation-z8">
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+        <ng-container matColumnDef="products">
+          <th mat-header-cell *matHeaderCellDef> Product </th>
+          <td mat-cell *matCellDef="let element"><img src="../../../assets/shop-products/sports/150/{{element.productIndex.integerValue | number}}x150.jpg" style="margin-top: 20px;"><p>{{element.nameOfItem}}</p></td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef> Price </th>
+          <td mat-cell *matCellDef="let element"> {{element.priceOfItem}} $ </td>
+        </ng-container>
+
+        <ng-container matColumnDef="quantity">
+          <th mat-header-cell *matHeaderCellDef> Quantity </th>
+          <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="total">
+          <th mat-header-cell *matHeaderCellDef> Total </th>
+          <td mat-cell *matCellDef="let element"> {{element.priceOfItem * element.quantity | number }} $ </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+    </section>
+    <section class="right-side-container">
+      <div class="order-summary">
+        <h1>YOUR ORDER SUMMARY</h1>
+        <ng-template [ngIf]='itemsInCart'>
+          <h2>Subtotal:  {{subtotalSum$ | async | number}}$</h2>
+        </ng-template>
+
+        <h2>Shipping:  20$</h2>
+        <button mat-flat-button color="primary">Checkout</button>
+      </div>
+    </section>
+  </div>
+  <div style="display: flex;justify-content: center;margin-top: 10px;">
+    <button class="options-buttons" mat-flat-button color="primary"(click)='emptyCart()'>Empty Cart</button>
+    <button class="options-buttons" mat-flat-button color="primary"(click)='emptyCart()'><a routerLink='../../shop'>Continue shopping</a></button>
+
+  </div>
+
+</div>
+
+
