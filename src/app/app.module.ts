@@ -13,6 +13,7 @@ import { HomeModule } from './home/home.module';
 // FIREBASE
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { ProductDetailsResolver } from './product-details.resolver';
 
 var firebaseConfig = {
   apiKey: "AIzaSyCSMVEI-JeMqnZkV0xINRC7aDOpR_zIvE4",
@@ -39,7 +40,7 @@ var firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule, // auth
   ],
-  providers: [],
+  providers: [ProductDetailsResolver],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -1,0 +1,186 @@
+.main-full-width-container {
+  width: 100%;
+  min-height: 93.2vh;
+  background-image: url(../../../assets/shop-products/details-each-product/details1920background.svg);
+  background-position: center center;
+  /* Background image doesn't tile */
+  background-repeat: no-repeat;
+  /* Background image is fixed in the viewport so that it doesn't move when
+   the content's height is greater than the image's height */
+  background-attachment: fixed;
+  /* This is what makes the background image rescale based
+   on the container's size */
+  background-size: cover;
+  /* Set a background color that will be displayed
+   while the background image is loading */
+  /* background-color: #464646;
+  font-size: 16px; */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.product-details-container {
+  /* border: 1px solid pink; */
+  width: 75%;
+  min-width: 970px;
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-details-container {
+  height: 50%;
+  width: 98%;
+  min-width: 900px;
+  /* border: 1px solid yellowgreen; */
+  display: flex;
+  margin-top: 15px;
+}
+
+.image-box {
+  /* border: 1px solid red; */
+  width: 33%;
+  height: 100%;
+  border-radius: 20px;
+}
+
+.image-box img {
+  max-height: 100%;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.details-box {
+  padding-left: 10px;
+  width: 67%;
+  color: white;
+  /* border: 1px solid red; */
+}
+
+.bottom-details-container {
+  margin-top: 16px;
+  height: 50%;
+  width: 98%;
+  min-width: 900px;
+  /* border: 1px solid rebeccapurple; */
+  margin-left: 50px;
+}
+
+.reviews-container {
+  display: flex;
+  justify-content: space-evenly;
+  /* border: 1px solid red; */
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.commenter-name{
+  font-size: 22px;
+  padding-left: 5px;
+}
+
+@media screen and (max-width: 1100px) {
+  .product-details-container {
+    margin-top: 20px;
+    min-width: 770px;
+  }
+  .page{
+    justify-content: center;
+  }
+  .top-details-container {
+    min-width: 700px;
+  }
+  .image-box {
+    width: 280px;
+  }
+  .image-box img {
+    width: 280px;
+  }
+  .bottom-details-container {
+    min-width: 770px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .main-full-width-container {
+    background-image: url(../../../assets/shop-products/details-each-product/1024productdetailsbck.svg);
+  }
+  .product-details-container {
+    min-width: 570px;
+  }
+  .top-details-container {
+    min-width: 500px;
+  }
+  .bottom-details-container {
+    min-width: 660px;
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .product-details-container {
+    min-width: 570px;
+    margin-left: 20px;
+  }
+  .top-details-container {
+    min-width: 500px;
+  }
+  .bottom-details-container {
+    min-width: 500px;
+    flex-direction: column;
+  }
+  .details-box {
+    width: 100%;
+  }
+  .reviews-container {
+    flex-direction: column;
+  }
+  .page {
+    order: -1;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .product-details-container {
+    margin-top: 20px;
+    min-width: 370px;
+    margin-left: 20px;
+  }
+  .top-details-container {
+    flex-direction: column;
+    min-width: 300px;
+  }
+  .bottom-details-container {
+    min-width: 370px;
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .main-full-width-container {
+    background-image: url(../../../assets/shop-products/details-each-product/mobile420.svg);
+  }
+  .product-details-container {
+    min-width: 300px;
+    margin-left: 5px;
+  }
+  .top-details-container {
+    flex-direction: column;
+    min-width: 300px;
+  }
+  .image-box {
+    width: 230px;
+  }
+  .image-box img {
+    width: 230px;
+  }
+  .bottom-details-container {
+    min-width: 300px;
+    margin-left: 5px;
+  }
+}

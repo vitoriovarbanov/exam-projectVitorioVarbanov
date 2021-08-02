@@ -1,6 +1,8 @@
 <div class="background-container">
   <h2>Welcome</h2>
   <h3>Log into your account</h3>
+
+  <p *ngIf="err" style="color: red;">{{err}}</p>
    <div class='form-container'>
 
   <form [formGroup]='loginForm' (ngSubmit)='onLoginClick()'>

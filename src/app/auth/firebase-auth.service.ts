@@ -55,6 +55,7 @@ export class FirebaseAuthService {
       })
       .catch(err => {
         console.log('Something went wrong:', err.message);
+        this.handleError(err.message)
       });
   }
 
@@ -79,6 +80,14 @@ export class FirebaseAuthService {
       newUser
     }
     return userRef.set(data, { merge: true })
+  }
+
+  currError = new BehaviorSubject('')
+  handleError(err){
+    let error = err;
+    console.log(error)
+    this.currError.next(error)
+    //window.alert(error);
   }
 
 

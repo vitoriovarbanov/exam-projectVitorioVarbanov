@@ -1,0 +1,54 @@
+
+<div class="main-full-width-container">
+  <div class="product-details-container">
+    <section class="top-details-container">
+      <div class="image-box">
+        <img src='../../../assets/shop-products/{{imgCategory}}/{{productDetails.productDetails.index.integerValue | number}}.jpg'>
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+          <symbol id="star" viewBox="0 0 26 28">
+            <path d="M26 10.109c0 .281-.203.547-.406.75l-5.672 5.531 1.344 7.812c.016.109.016.203.016.313 0 .406-.187.781-.641.781a1.27 1.27 0 0 1-.625-.187L13 21.422l-7.016 3.687c-.203.109-.406.187-.625.187-.453 0-.656-.375-.656-.781 0-.109.016-.203.031-.313l1.344-7.812L.39 10.859c-.187-.203-.391-.469-.391-.75 0-.469.484-.656.875-.719l7.844-1.141 3.516-7.109c.141-.297.406-.641.766-.641s.625.344.766.641l3.516 7.109 7.844 1.141c.375.063.875.25.875.719z"/>
+          </symbol>
+        </svg>
+      </div>
+      <div class="details-box">
+        <h1 style="margin: 0;">{{productDetails.productDetails.productName.stringValue}}</h1>
+        <h3 style="margin: 0;">{{productDetails.productDetails.price.doubleValue}}$</h3>
+        <h2 style="margin: 0;">Description</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <button mat-raised-button color="primary">Add to cart</button>
+      </div>
+
+    </section>
+    <section class="bottom-details-container">
+      <h1 style="text-align: center;">REVIEWS</h1>
+        <div class="reviews-container">
+          <form class="example-form" [formGroup]='reviewsForm' (ngSubmit)='postProductReview()'>
+          <mat-form-field class="example-full-width" style="width: 300px;">
+          <mat-label style="font-size: 22px">Leave a comment</mat-label>
+          <textarea matInput formControlName='comment' style="font-size: 18px;" matInput cdkTextareaAutosize cdkAutosizeMinRows="4" cdkAutosizeMaxRows="10">
+          </textarea>
+          <mat-error *ngIf="reviewsForm.controls.comment.touched && reviewsForm.controls.comment.invalid">
+            <span class="err-msg" *ngIf="reviewsForm.controls.comment.errors.required">This field is mandatory.</span>
+            <span class="err-msg" *ngIf="reviewsForm.controls.comment.errors.pattern">This field is invalid.</span>
+          </mat-error>
+          </mat-form-field>
+          <div class="btn-container">
+            <button mat-stroked-button class="submit-review" type="submit">Continue</button>
+          </div>
+          </form>
+          <section style="margin-left: 10px;">
+            <span class="material-icons">verified</span><span class='commenter-name'>John</span><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis numquam eaque ullam, aperiam nemo nobis non deleniti hic vel pariatur est accusamus! Explicabo debitis aliquam laborum, esse ipsam reiciendis. Laborum!</p>
+            <span class="material-icons">verified</span><span class='commenter-name'>Michael</span><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, fuga dignissimos. Voluptates, laudantium quis. Ab tempora numquam, asperiores nam porro cupiditate officiis! Velit quam eligendi ad fugit animi numquam laudantium?</p>
+            <ng-template [ngIf]='productDetails.productDetails.reviews'>
+              <div *ngFor="let item of productDetails.productDetails.reviews.arrayValue.values">
+                <span class="material-icons" style="color: #64dd17;">verified</span>
+                <span class='commenter-name'>Michael</span>
+                <p>{{item.mapValue.fields.text.stringValue}}</p>
+            </div>
+            </ng-template>
+          </section>
+      </div>
+    </section>
+  </div>
+
+</div>

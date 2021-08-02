@@ -88,6 +88,7 @@
 .master{
   min-height: 100vh;
   background-image: url(../../../assets/blob-scene-haikei.svg);
+  margin: 0 auto;
 }
 
 .example-container{
@@ -116,7 +117,7 @@
 }
 
 .images-section{
-  width: 90%;
+  width: 97%;
   height: 95%;
   display: flex;
   justify-content: space-around;

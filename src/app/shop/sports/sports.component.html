@@ -10,7 +10,10 @@
 
 
 <div class='main-content-div'>
-  <app-shopping-cart [itemsInCart]='sportsFitnessProducts' [itemsSum]='sumInCart'></app-shopping-cart>
+  <ng-template [ngIf]='showCart'>
+    <app-shopping-cart [itemsInCart]='sportsFitnessProducts' [itemsSum]='sumInCart'></app-shopping-cart>
+  </ng-template>
+
 
   <section class="cards">
     <article class="card card" *ngFor='let product of products | slice: lowValue : highValue | sortBy: sortCriteria; let i = index'>

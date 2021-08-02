@@ -13,15 +13,21 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { SportsComponent } from './sports/sports.component';
 import { DisplayCartItemsComponent } from './display-cart-items/display-cart-items.component';
 import { CategoriesNavbarComponent } from './categories-navbar/categories-navbar.component';
+import { AuthModule } from '../auth/auth.module';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductDetailsResolver } from '../product-details.resolver';
 
 
 @NgModule({
-  declarations: [ShopHomeComponent, FoodBeveragesComponent, SortByPipe, SortExpansionPanelComponent, ShoppingCartComponent, SportsComponent, DisplayCartItemsComponent, CategoriesNavbarComponent],
+  declarations: [ShopHomeComponent, FoodBeveragesComponent, SortByPipe, SortExpansionPanelComponent, ShoppingCartComponent, SportsComponent, DisplayCartItemsComponent, CategoriesNavbarComponent, ProductDetailsComponent],
   imports: [
     CommonModule,
     ShopRoutingModule,
     AngularMaterialModule,
-    HttpClientModule
-  ]
+    HttpClientModule,
+    AuthModule,
+    ReactiveFormsModule
+  ],
+  providers: [ProductDetailsResolver]
 })
 export class ShopModule { }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../products.service';
 import { FoodProducts } from '../models/FoodProduts'
 import { PageEvent } from '@angular/material/paginator';
+import { FirebaseAuthService } from 'src/app/auth/firebase-auth.service';
 
 
 @Component({
@@ -14,14 +15,20 @@ export class FoodBeveragesComponent implements OnInit {
   foodBeveragesInCart: number;
   sumInCart: number;
   sortCriteria: string = 'default'
+  showCart: boolean
 
-  constructor(private srvc: ProductsService) {
+  constructor(private srvc: ProductsService, private authSrvc: FirebaseAuthService) {
     this.srvc.getFoodBeveragesProducsts()
       .subscribe((data: FoodProducts) => {
         this.products = data
       })
       this.srvc.productsInCart$.subscribe(data=>{
         this.foodBeveragesInCart = data
+      })
+
+      this.authSrvc.signedIn$.subscribe(data=>{
+        console.log(data)
+        this.showCart = data
       })
   }
 

@@ -7,6 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 import firebase from 'firebase/app'
 import { SportsFitnessProducts } from './models/SportsFitnessProducts';
 import { ProductsInCart } from './models/ProductsInCart';
+import { ProductDetails } from './models/ProductDetails';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,15 @@ export class ProductsService {
     return this.http.get<SportsFitnessProducts>('https://firestore.googleapis.com/v1/projects/health-web-shop/databases/(default)/documents/sports')
       .pipe(map(data => {
         return data['documents'].map(x => x['fields'])
+      }))
+  }
+
+  getItemDetails(category,productID){
+    return this.http.get<ProductDetails>(`https://firestore.googleapis.com/v1/projects/health-web-shop/databases/(default)/documents/${category}`)
+      .pipe(map(data => {
+        let allItems = data['documents'].map(x => x['fields'])
+        let neededItem = allItems.find(x=>x.index.integerValue===productID);
+        return neededItem
       }))
   }
 
