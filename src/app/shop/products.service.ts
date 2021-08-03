@@ -33,11 +33,11 @@ export class ProductsService {
       }))
   }
 
-  getItemDetails(category,productID){
+  getItemDetails(category, productID) {
     return this.http.get<ProductDetails>(`https://firestore.googleapis.com/v1/projects/health-web-shop/databases/(default)/documents/${category}`)
       .pipe(map(data => {
         let allItems = data['documents'].map(x => x['fields'])
-        let neededItem = allItems.find(x=>x.index.integerValue===productID);
+        let neededItem = allItems.find(x => x.index.integerValue === productID);
         return neededItem
       }))
   }
@@ -105,7 +105,7 @@ export class ProductsService {
   count: any
   sum: any
   addedItems: number = 1;
-  updateCart(priceOfItem, nameOfItem, productIndex) {
+  updateCart(priceOfItem, nameOfItem, productIndex, category) {
     let str_sum = localStorage.getItem("cartSum");
     let str_count = localStorage.getItem("cartItems");
     //get a numeric value from str_count, put it in count
@@ -116,16 +116,15 @@ export class ProductsService {
       this.sum = Number(str_sum)
       console.log(this.sum)
     }
-
     // Add a new document in collection "users"
     this.firestoreDb.collection("users").doc(localStorage.getItem('uid')).update({
-      cartItems: firebase.firestore.FieldValue.arrayUnion({ priceOfItem, nameOfItem, productIndex, quantity: this.addedItems++ })//[],
+      cartItems: firebase.firestore.FieldValue.arrayUnion({ priceOfItem, nameOfItem, productIndex, category, quantity: this.addedItems++ })//[],
     })
       .then(() => {
         console.log("Document successfully written!");
       })
       .catch((error) => {
-        console.error("Error writing document: ", error);
+        console.log("Error writing document: ", error);
       });
     //
 
@@ -139,7 +138,6 @@ export class ProductsService {
     this.productsInCart$.next(this.count)
     this.cartItemsSum$.next(this.sum)
   }
-
 
 
 }

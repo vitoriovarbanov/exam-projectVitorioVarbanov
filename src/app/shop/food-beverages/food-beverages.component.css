@@ -16,6 +16,18 @@
   background-image: url(../../../assets/products-background/1920.svg);
   min-height: 80vh;
 }
+
+.hidden-cart-message{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden-cart-message p{
+  margin-top: 10px;
+  font-size: 22px;
+}
+
 .cards {
   /* border: 1px solid pink; */
   margin: 0 auto;
@@ -69,17 +81,17 @@ margin: 20px;
 
 .card__img--hover {
   transition: 0.2s all ease-out;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
   position: absolute;
-    height: 235px;
+  height: 235px;
   border-top-left-radius: 12px;
-border-top-right-radius: 12px;
-top: 0;
-
+  border-top-right-radius: 12px;
+  top: 0;
 }
+
 .card {
   margin: 25px;
   transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);

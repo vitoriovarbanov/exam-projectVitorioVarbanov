@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore'
+import { take } from 'rxjs/operators';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { ProductsService } from '../shop/products.service';
 
 
 interface User {
@@ -20,7 +22,43 @@ export class FirebaseAuthService {
   newUser = new BehaviorSubject(true)
 
   constructor(public afAuth: AngularFireAuth,
-    private router: Router, private firestoreDatabase: AngularFirestore) { }
+    private router: Router, private firestoreDatabase: AngularFirestore, private srvc: ProductsService) {
+    this.afAuth.authState.subscribe((user) => {
+      if (user) {
+        this.firestoreDatabase.doc(`users/${user.uid}`).valueChanges()
+          .pipe(take(1)).subscribe(data => {
+            this.newUser.next(data['newUser'])
+          })
+        this.newUser.subscribe(data => {
+          if (data === true) {
+            this.signedIn$.next(false)
+          } else {
+            localStorage.setItem('photoURL', user.photoURL)
+            localStorage.setItem('email', user.email)
+            localStorage.setItem('uid', user.uid)
+            localStorage.setItem('displayName', user.displayName)
+            this.signedIn$.next(true)
+            this.srvc.getUserCurrentItemsInCart()
+              .subscribe(data => {
+                /* console.log(data) */
+                let cartItems = 0;
+                let cartSum = 0;
+                data.forEach(el => {
+                  cartItems += el.quantity
+                  cartSum += el.priceOfItem * el.quantity
+                });
+                localStorage.setItem('cartItems', cartItems.toString())
+                localStorage.setItem('cartSum', cartSum.toString())
+                this.srvc.productsInCart$.next(Number(localStorage.getItem('cartItems')))
+              })
+          }
+        })
+        return this.firestoreDatabase.doc(`users/${user.uid}`).valueChanges()
+      } else {
+        this.signedIn$.next(false)
+      }
+    })
+  }
 
 
   async AuthLogin(provider) {
@@ -31,6 +69,7 @@ export class FirebaseAuthService {
         return this.updateUserData(result.user, result.additionalUserInfo.isNewUser)
       }).catch((error) => {
         console.log(error)
+        this.handleError(error.message)
       })
   }
 
@@ -41,7 +80,10 @@ export class FirebaseAuthService {
         console.log('Registration successfull!')
         return this.updateUserData(data.user, data.additionalUserInfo.isNewUser)
       })
-      .catch(err => console.log(err.message))
+      .catch(err => {
+        console.log(err.message)
+        this.handleError(err.message)
+      })
   }
 
   login(email: string, password: string) {
@@ -83,7 +125,7 @@ export class FirebaseAuthService {
   }
 
   currError = new BehaviorSubject('')
-  handleError(err){
+  handleError(err) {
     let error = err;
     console.log(error)
     this.currError.next(error)

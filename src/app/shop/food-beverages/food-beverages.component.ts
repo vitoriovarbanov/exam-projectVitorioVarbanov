@@ -3,6 +3,7 @@ import { ProductsService } from '../products.service';
 import { FoodProducts } from '../models/FoodProduts'
 import { PageEvent } from '@angular/material/paginator';
 import { FirebaseAuthService } from 'src/app/auth/firebase-auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -17,19 +18,20 @@ export class FoodBeveragesComponent implements OnInit {
   sortCriteria: string = 'default'
   showCart: boolean
 
-  constructor(private srvc: ProductsService, private authSrvc: FirebaseAuthService) {
+  constructor(private srvc: ProductsService, private authSrvc: FirebaseAuthService, private _snackBar: MatSnackBar) {
     this.srvc.getFoodBeveragesProducsts()
       .subscribe((data: FoodProducts) => {
         this.products = data
       })
-      this.srvc.productsInCart$.subscribe(data=>{
-        this.foodBeveragesInCart = data
-      })
 
-      this.authSrvc.signedIn$.subscribe(data=>{
-        console.log(data)
-        this.showCart = data
-      })
+    this.srvc.productsInCart$.subscribe(data => {
+      this.foodBeveragesInCart = data
+    })
+
+    this.authSrvc.signedIn$.subscribe(data => {
+      console.log(data)
+      this.showCart = data
+    })
   }
 
   ngOnInit(): void {
@@ -46,13 +48,14 @@ export class FoodBeveragesComponent implements OnInit {
     return event;
   }
 
-  addItemsToCart(priceOfItem,nameOfItem,productIndex) {
+  addItemsToCart(priceOfItem, nameOfItem, productIndex) {
     //console.log(priceOfItem)
-    this.srvc.updateCart(priceOfItem,nameOfItem,productIndex)
-    this.srvc.productsInCart$.subscribe(data=>{
+    this.srvc.updateCart(priceOfItem, nameOfItem, productIndex, 'foodbeverages')
+
+    this.srvc.productsInCart$.subscribe(data => {
       this.foodBeveragesInCart = data
     })
-    this.srvc.cartItemsSum$.subscribe(data=>{
+    this.srvc.cartItemsSum$.subscribe(data => {
       this.sumInCart = data
     })
   }
@@ -61,4 +64,7 @@ export class FoodBeveragesComponent implements OnInit {
     this.sortCriteria = e;
   }
 
+  openSnackBar(message: string, action) {
+    this._snackBar.open(message, action);
+  }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-top-view',
@@ -10,6 +11,10 @@ export class TopViewComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  goToURL(url){
+    window.open(url, "_blank");
   }
 
 }

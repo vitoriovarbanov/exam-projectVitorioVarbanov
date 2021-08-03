@@ -96,6 +96,11 @@ svg {
   padding-top: 10px;
 }
 
+.mat-button{
+  padding: 0 !important;
+  min-width: 0px !important;
+}
+
 /* .wrapper{
   border: 0.2px solid red;
   border-radius: 20px;

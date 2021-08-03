@@ -43,7 +43,7 @@ export class SportsComponent implements OnInit {
   }
 
   addItemsToCart(priceOfItem,nameOfItem,productIndex) {
-    this.srvc.updateCart(priceOfItem,nameOfItem,productIndex)
+    this.srvc.updateCart(priceOfItem,nameOfItem,productIndex,'sports')
     this.srvc.productsInCart$.subscribe(data=>{
       this.sportsFitnessProducts = data
     })

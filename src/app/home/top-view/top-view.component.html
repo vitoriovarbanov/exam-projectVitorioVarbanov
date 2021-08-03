@@ -18,13 +18,13 @@
   </section>
     <div class="social-network-tab">
       <div class="wrapper">
-        <span class="material-icons">facebook</span><br>
+        <a mat-button (click)='goToURL("https://facebook.com")'><span class="material-icons">facebook</span></a>
       </div>
       <div class="wrapper">
-        <span class="material-icons">email</span><br>
+        <a mat-button (click)='goToURL("https://gmail.com")'><span class="material-icons">email</span></a>
       </div>
       <div class="wrapper">
-        <span class="material-icons">call</span><br>
+        <a mat-button (click)='goToURL("https://discord.com")'><span class="material-icons">call</span><br></a>
       </div>
     </div>
 </div>

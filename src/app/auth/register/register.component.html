@@ -2,7 +2,8 @@
   <!--  <p>{{registerForm.errors | json }}</p> -->
    <h2>Create a new account</h2>
    <!-- <h3 style="color: white;">Register</h3> -->
-    <div class='form-container'>
+  <p *ngIf="err" style="color: red;">{{err}}</p>
+  <div class='form-container'>
 
    <form [formGroup]='registerForm' (ngSubmit)='onRegisterClick()'>
      <mat-form-field appearance="fill">

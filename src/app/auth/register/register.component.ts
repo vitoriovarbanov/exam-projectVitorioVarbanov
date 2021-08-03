@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
   hide: boolean = true;
   emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   provider = new firebase.auth.GoogleAuthProvider();
+  err
 
   registerForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.pattern(this.emailRegex)]),
@@ -22,13 +23,24 @@ export class RegisterComponent implements OnInit {
     confirmPass: new FormControl('', [Validators.required])
   }, { validators: [this.matchPassword.validate]})
 
-  constructor(private matchPassword: MatchPassowords, private authService: FirebaseAuthService) { }
+  constructor(private matchPassword: MatchPassowords, private authService: FirebaseAuthService) {
+    this.authService.currError.subscribe(data=>{
+      this.err = data;
+      /* setTimeout(()=>{
+        this.err = '';
+      },10000) */
+    })
+  }
 
   ngOnInit(): void {
   }
 
   onRegisterClick(){
-    this.authService.registerUserWithMail(this.registerForm.value.email,this.registerForm.value.password)
+    if(this.registerForm.value.password===this.registerForm.value.confirmPass){
+      this.authService.registerUserWithMail(this.registerForm.value.email,this.registerForm.value.password)
+    }else{
+      this.err = 'Passwords don\'t match'
+    }
   }
 
   googleLogin(e){

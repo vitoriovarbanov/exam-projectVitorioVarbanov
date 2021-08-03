@@ -3,6 +3,7 @@ import { ProductsService } from '../products.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import firebase from 'firebase/app'
 import { BehaviorSubject } from 'rxjs';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-display-cart-items',
@@ -14,7 +15,7 @@ export class DisplayCartItemsComponent implements OnInit {
   itemsInCart
   subtotalSum$ = new BehaviorSubject(0)
 
-  constructor(private srvc: ProductsService, private firestoreDb: AngularFirestore) {
+  constructor(private srvc: ProductsService, private firestoreDb: AngularFirestore, private _snackBar: MatSnackBar) {
     this.itemsInCart = this.srvc.getUserCurrentItemsInCart()
 
     this.srvc.validateCartSubtotalSum().subscribe(data=>
@@ -43,6 +44,10 @@ export class DisplayCartItemsComponent implements OnInit {
       });
     this.itemsInCart = this.srvc.emptyCartFunctionUpdate()
     this.subtotalSum$.next(0)
+  }
+
+  openSnackBar(message: string, action) {
+    this._snackBar.open(message, action);
   }
 
 }

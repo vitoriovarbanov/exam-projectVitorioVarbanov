@@ -14,6 +14,12 @@
     <app-shopping-cart [itemsInCart]='foodBeveragesInCart' [itemsSum]='sumInCart'></app-shopping-cart>
   </ng-template>
 
+  <ng-template [ngIf]='!showCart'>
+    <div class="hidden-cart-message">
+      <p>To see details and add products to your cart <a class="example-spacer-right" routerLink='../../auth/login' mat-raised-button color="primary" aria-label="Shop link">Log In</a> to your account</p>
+    </div>
+  </ng-template>
+
 
 
   <section class="cards">
@@ -37,7 +43,12 @@
         <div class="card__info">
           <span class="card__category">{{product.productName.stringValue}}</span>
           <h3 class="card__title">Food & Beverages</h3>
-          <button mat-flat-button color="primary" (click)='addItemsToCart(product.price.doubleValue,product.productName.stringValue,product.index)'>Add to cart</button>
+          <ng-template [ngIf]='showCart'>
+            <button mat-flat-button color="primary" (click)='addItemsToCart(product.price.doubleValue,product.productName.stringValue,product.index)'
+            (click)="openSnackBar('Item added to card', 'Hide')">
+            Add to cart
+          </button>
+          </ng-template>
           <span class="card__by"><a href="#" class="card__price" title="price" style="font-size: 28px; padding-left: 15px;">{{product.price.doubleValue}}$</a></span>
         </div>
       </article>
