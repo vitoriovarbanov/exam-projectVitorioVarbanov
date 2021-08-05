@@ -1,0 +1,90 @@
+<div class="background-container">
+  <div class="userphoto-container">
+    <section class="cards">
+        <article class="card card">
+          <ng-template [ngIf]='!photoURL'>
+            <div class="card__img" style="background-image: url('../../../assets/profile-pic/profile.svg');"></div>
+          </ng-template>
+          <ng-template [ngIf]='photoURL'>
+            <img class="card__img" [src]="photoURL | async | safe">
+          </ng-template>
+
+          <ng-template [ngIf]='!photoURL'>
+            <a class="card_link">
+              <div class="card__img--hover" style="background-image: url('../../../assets/profile-pic/profile.svg');"></div>
+            </a>
+          </ng-template>
+           <ng-template [ngIf]='photoURL'>
+            <a class="card_link">
+              <img class="card__img--hover" [src]="photoURL | async | safe">
+            </a>
+           </ng-template>
+        </article>
+    </section>
+
+    <form [formGroup]='photourlForm' (ngSubmit)='updateProfilePicture(photourlForm.value.photoURL)'>
+      <div class="centered-buttons">
+        <mat-form-field appearance="fill">
+          <mat-label>Paste a link to your profile picture - https://</mat-label>
+          <input matInput formControlName='photoURL'>
+        </mat-form-field>
+        <button mat-raised-button color="primary" class="login-button" type="submit" [disabled]="!photourlForm.valid">Update profile picture</button>
+      </div>
+    </form>
+  </div>
+
+  <div class='form-container'>
+    <form [formGroup]='profileForm' (ngSubmit)='onProfileUpdate(profileForm.value.name,profileForm.value.email,profileForm.value.telephone,profileForm.value.address,
+    profileForm.value.country,profileForm.value.postalCode)'>
+      <h2 style="margin-left: 20px;">Profile Details</h2>
+      <div class="first-table-row">
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName='name'>
+            <mat-error *ngIf="profileForm.controls.name.touched && profileForm.controls.name.invalid">
+              <span class="err-msg" *ngIf="profileForm.controls.name.errors.required">This field is mandatory.</span>
+           </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName='email'>
+          <mat-error class="err-msg" *ngIf="profileForm.controls.email.touched && profileForm.controls.email.invalid">
+            <span *ngIf="profileForm.controls.email.errors.required">This field is mandatory.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Telephone</mat-label>
+          <input matInput formControlName='telephone'>
+          <mat-error class="err-msg" *ngIf="profileForm.controls.telephone.touched && profileForm.controls.telephone.invalid">
+            <span *ngIf="profileForm.controls.telephone.errors.required">This field is mandatory.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label >Address</mat-label>
+          <input matInput formControlName='address'>
+         <mat-error *ngIf="profileForm.controls.address.touched && profileForm.controls.address.invalid">
+            <span class="err-msg" *ngIf="profileForm.controls.address.errors.required">This field is mandatory.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Country</mat-label>
+          <input matInput formControlName='country'>
+          <mat-error class="err-msg" *ngIf="profileForm.controls.country.touched && profileForm.controls.country.invalid">
+            <span *ngIf="profileForm.controls.country.errors.required">This field is mandatory.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Postal Code</mat-label>
+          <input matInput formControlName='postalCode'>
+         <mat-error class="err-msg" *ngIf="profileForm.controls.postalCode.touched && profileForm.controls.postalCode.invalid">
+            <span *ngIf="profileForm.controls.postalCode.errors.required">This field is mandatory.</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="submitbtn-container">
+        <button mat-raised-button color="primary" class="login-button" type="submit" [disabled]="!profileForm.valid">Update profile</button>
+      </div>
+    </form>
+  </div>
+
+</div>

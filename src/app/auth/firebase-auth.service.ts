@@ -113,7 +113,9 @@ export class FirebaseAuthService {
   updateUserData({ uid, email, displayName, photoURL }: User, newUser) {
     //Sets user data to firestore on login with google/register
     const userRef: AngularFirestoreDocument<User> = this.firestoreDatabase.doc(`users/${uid}`)
-
+    /* console.log(email)
+    console.log(uid)
+    console.log(userRef[displayName]) */
     const data = {
       uid,
       email,
