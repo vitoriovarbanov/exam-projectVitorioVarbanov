@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../products.service';
-import { SportsFitnessProducts } from '../models/SportsFitnessProducts'
+import { AllProductsBaseModel } from '../models/AllProductsBaseModel'
 import { PageEvent } from '@angular/material/paginator';
 import { FirebaseAuthService } from 'src/app/auth/firebase-auth.service';
 
@@ -18,7 +18,7 @@ export class SportsComponent implements OnInit {
 
   constructor(private srvc: ProductsService, private authSrvc: FirebaseAuthService) {
     this.srvc.getSportFitnessProducts()
-      .subscribe((data: SportsFitnessProducts) => {
+      .subscribe((data: AllProductsBaseModel) => {
         this.products = data
       })
     this.srvc.productsInCart$.subscribe(data => {

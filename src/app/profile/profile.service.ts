@@ -55,6 +55,10 @@ export class ProfileService {
   takePhotoURL() {
     return this.firestoreDb.doc<PhotoURL>(`users/${localStorage.getItem('uid')}`).valueChanges()
       .pipe(take(1), map((data) => {
+        if(!data.photoURL){
+          console.log(`here`)
+          return 'https://st.depositphotos.com/1052233/2815/v/600/depositphotos_28158459-stock-illustration-male-default-profile-picture.jpg'
+        }
         return data.photoURL
       }))
   }

@@ -17,7 +17,7 @@ export class ShopHomeComponent implements OnInit {
 
   images = [
     { src: "../../../assets/shop-home/categories/8.jpg", alt: 'display-alt-text-here', text: 'Food and Beverages', link: 'foodbeverages' },
-    { src: "../../../assets/shop-home/categories/9.jpg", alt: 'display-alt-text-here', text: 'Herbs and Botanicals', link: '' },
+    { src: "../../../assets/shop-home/categories/9.jpg", alt: 'display-alt-text-here', text: 'Herbs and Botanicals', link: 'herbs' },
     { src: "../../../assets/shop-home/categories/10.jpg", alt: 'display-alt-text-here', text: 'Beauty and Personal care', link: '' },
     { src: "../../../assets/shop-home/categories/5.jpg", alt: 'display-alt-text-here', text: 'Sports and Fitness', link: 'sports' },
     { src: "../../../assets/shop-home/categories/11.jpg", alt: 'display-alt-text-here', text: 'Vitamins and Supplements', link: '' },

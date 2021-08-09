@@ -3,7 +3,7 @@
   min-width: 98vw;
   min-height: 100vh;
   /* background-color: #00796b; */
-  background-image: url(../../../assets/home-top/backgrounds/home1920.svg);
+  background-image: url(../../../assets/products-background/1920.svg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,7 +80,7 @@ margin: 20px;
   background-repeat: no-repeat;
   width: 100%;
   position: absolute;
-  height: 235px;
+  height: 100%;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
   top: 0;
@@ -148,6 +148,7 @@ border-bottom-right-radius: 12px;
 .centered-buttons{
   display: flex;
   flex-direction: column;
+  margin-left: 10px;
 }
 
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../profile.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-profile',
@@ -14,7 +15,7 @@ export class ProfileComponent implements OnInit {
 
   profileForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required],),
     telephone: new FormControl('', [Validators.required]),
     address: new FormControl('', [Validators.required]),
     country: new FormControl('', [Validators.required]),
@@ -25,8 +26,8 @@ export class ProfileComponent implements OnInit {
     photoURL: new FormControl('', [Validators.required, Validators.pattern(this.httpsRegex)])
   })
 
-  constructor(private profileService: ProfileService) {
-    this.profileService.getUserInfo().subscribe(data=>{
+  constructor(private profileService: ProfileService, private _snackBar: MatSnackBar) {
+    this.profileService.getUserInfo().subscribe(data => {
       this.profileData = data;
       //console.log(this.profileData)
       this.photoURL = this.profileData.photoURL
@@ -47,13 +48,19 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
-  onProfileUpdate(name,email,telephone,address,country,postalCode){
-    this.profileService.updateProfile(name,email,telephone,address,country,postalCode)
+  openSnackbar(message,action) {
+    this._snackBar.open(message, action);
   }
 
-  updateProfilePicture(url){
+
+  onProfileUpdate(name, email, telephone, address, country, postalCode) {
+    this.profileService.updateProfile(name, email, telephone, address, country, postalCode)
+  }
+
+  updateProfilePicture(url) {
     this.profileService.updatePicture(url)
     this.photoURL = this.profileService.takePhotoURL()
   }

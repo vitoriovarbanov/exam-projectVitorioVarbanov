@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../products.service';
-import { FoodProducts } from '../models/FoodProduts'
+import { AllProductsBaseModel } from '../models/AllProductsBaseModel'
 import { PageEvent } from '@angular/material/paginator';
 import { FirebaseAuthService } from 'src/app/auth/firebase-auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -20,7 +20,7 @@ export class FoodBeveragesComponent implements OnInit {
 
   constructor(private srvc: ProductsService, private authSrvc: FirebaseAuthService, private _snackBar: MatSnackBar) {
     this.srvc.getFoodBeveragesProducsts()
-      .subscribe((data: FoodProducts) => {
+      .subscribe((data: AllProductsBaseModel) => {
         this.products = data
       })
 

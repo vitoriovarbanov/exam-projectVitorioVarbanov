@@ -7,6 +7,11 @@ import {
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
+import { ProfileService } from 'src/app/profile/profile.service';
+
+interface User {
+  displayName: string;
+}
 
 @Component({
   selector: 'app-product-details',
@@ -17,12 +22,17 @@ export class ProductDetailsComponent implements OnInit {
   productDetails
   imgCategory = this.router.snapshot.url[0].path
   rating
+  username
 
   reviewsForm = new FormGroup({
     comment: new FormControl('', [Validators.required]),
   })
   constructor(private router: ActivatedRoute, private reviewsSrvc: ReviewsService,
-    private _snackBar: MatSnackBar) { }
+    private _snackBar: MatSnackBar, private profileService: ProfileService) {
+      this.profileService.getUserInfo().subscribe(data=>{
+        this.username = data
+      })
+  }
 
   ngOnInit(): void {
     this.productDetails = this.router.snapshot.data
@@ -41,13 +51,15 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   postProductReview() {
-    this.reviewsSrvc.createPostReviewRequest(this.imgCategory, this.router.snapshot.url[1].path, this.reviewsForm.value.comment, 4)
+    this.reviewsSrvc.createPostReviewRequest(this.imgCategory, this.router.snapshot.url[1].path, this.reviewsForm.value.comment, 4, this.username.displayName)
+    this.reviewsForm.value.comment = '';
+    this.openSnackBar('Your review has been saved!')
   }
 
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
-  openSnackBar() {
-    this._snackBar.open('Cannonball!!', 'End now', {
+  openSnackBar(text) {
+    this._snackBar.open(text, 'Close', {
       duration: 2000,
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,

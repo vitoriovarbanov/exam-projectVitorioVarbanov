@@ -10,8 +10,8 @@ import { ProductsService } from '../shop/products.service';
 interface User {
   uid: string,
   email: string,
-  displayName: string,
-  photoURL: string,
+  //displayName: string,
+  //photoURL: string,
 }
 
 @Injectable({
@@ -91,6 +91,9 @@ export class FirebaseAuthService {
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.signedIn$.next(true)
+        console.log(result.additionalUserInfo)
+        console.log(result.user)
+        console.log(result)
         console.log('Logged In!');
         this.router.navigate(['/'])
         return this.updateUserData(result.user, result.additionalUserInfo.isNewUser)
@@ -110,17 +113,18 @@ export class FirebaseAuthService {
     })
   }
 
-  updateUserData({ uid, email, displayName, photoURL }: User, newUser) {
+  updateUserData({ uid, email }: User, newUser) {
     //Sets user data to firestore on login with google/register
     const userRef: AngularFirestoreDocument<User> = this.firestoreDatabase.doc(`users/${uid}`)
     /* console.log(email)
     console.log(uid)
     console.log(userRef[displayName]) */
+    //console.log(photoURL)
     const data = {
       uid,
       email,
-      displayName,
-      photoURL,
+      //displayName,
+      //photoURL,
       newUser
     }
     return userRef.set(data, { merge: true })

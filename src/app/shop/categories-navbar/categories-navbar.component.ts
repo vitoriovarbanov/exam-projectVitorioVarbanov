@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import categories from '../models/categories'
 
 @Component({
   selector: 'app-categories-navbar',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriesNavbarComponent implements OnInit {
   showClose = false;
-  constructor() { }
+  categoriesImported
+
+  constructor() {
+    this.categoriesImported = categories
+  }
 
   ngOnInit(): void {
   }
-
 }

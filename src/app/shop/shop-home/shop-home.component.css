@@ -93,20 +93,11 @@
 
 .example-container{
   margin: 0;
-  /* height: 100vh; */
   overflow: none;
 }
 
 .side{
   background-color: #00796B;
-}
-
-.main-content-container{
-  /* height: 100vh; */
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
 }
 
 .header-categories{
@@ -148,33 +139,16 @@ svg{
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
-  flex: 1 0 21%; /* explanation below */
+  flex: 1 0 21%;
 }
 
 .test{
   margin: 0;
-  width: 99.9%;
   height: 250px;
- /*  background-image: url(../../../assets/shop-home/header-top/brooke-lark-W9OKrxBqiZA-unsplash.jpg); */
-  /* background-size: cover;
-  background-position-y: -10em; */
 }
-
-/* @media screen and (min-width: 1200px) {
-  .main-content-container{
-    background-image: url(../../../assets/shop-home/blob-scene-haikei.svg);
-  }
-} */
-
-/* @media screen and (min-height: 1500px) {
-  .main-content-container{
-    background-image: url(../../../assets/shop-home/2000.svg);
-  }
-} */
 
 @media screen and (max-height: 1530px) {
   .main-content-container{
     background-image: url(../../../assets/shop-home/2000.svg);
   }
 }
-

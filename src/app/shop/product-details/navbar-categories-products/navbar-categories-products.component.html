@@ -1,0 +1,18 @@
+<nav>
+  <div class="desktop-view">
+    <ng-container *ngIf='categoriesImported'>
+      <a *ngFor='let cat of categoriesImported' routerLink='../../{{cat.categoryName}}'>{{cat.stringValue}}</a>
+    </ng-container>
+  </div>
+  <div class="mobile-view">
+    <button mat-icon-button class="example-icon-top" [matMenuTriggerFor]="categoriesMenu">
+      <button mat-stroked-button color="accent" *ngIf='!showClose' aria-label="Menu button toggle">Categories</button>
+      <span class="material-icons" *ngIf='showClose' aria-label="Close Menu">highlight_off</span>
+  </button>
+  <mat-menu #categoriesMenu>
+    <ng-template matMenuContent>
+      <menu mat-menu-item *ngFor='let cat of categoriesImported'><a routerLink='../../{{cat.categoryName}}' mat-raised-button color="accent" aria-label="Shop link">{{cat.stringValue}}</a></menu>
+    </ng-template>
+  </mat-menu>
+  </div>
+</nav>

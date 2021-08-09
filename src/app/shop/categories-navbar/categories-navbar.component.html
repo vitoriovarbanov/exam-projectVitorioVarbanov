@@ -1,12 +1,8 @@
 <nav>
   <div class="desktop-view">
-    <a routerLink='../foodbeverages'>Food and Beverages</a>
-    <a routerLink='../sports'>Herbs and Botanicals</a>
-    <a routerLink='../sports'>Beauty and Personal care</a>
-    <a routerLink='../sports'>Sports and Fitness</a>
-    <a routerLink='../sports'>Vitamins and Supplements</a>
-    <a routerLink='../sports'>Superfoods</a>
-    <a routerLink='../sports'>Diet</a>
+    <ng-container *ngIf='categoriesImported'>
+      <a *ngFor='let cat of categoriesImported' routerLink='../{{cat.categoryName}}'>{{cat.stringValue}}</a>
+    </ng-container>
   </div>
   <div class="mobile-view">
     <button mat-icon-button class="example-icon-top" [matMenuTriggerFor]="categoriesMenu">
@@ -15,14 +11,7 @@
   </button>
   <mat-menu #categoriesMenu>
     <ng-template matMenuContent>
-      <menu mat-menu-item><a routerLink='../foodbeverages' mat-raised-button color="accent" aria-label="Shop link">Food and Beverages</a></menu>
-      <menu mat-menu-item><a routerLink='../sports' mat-raised-button color="accent" aria-label="Shop link">Herbs and Botanicals</a></menu>
-      <menu mat-menu-item><a routerLink='../sports' mat-raised-button color="accent" aria-label="Shop link">Beauty and Personal care</a></menu>
-      <menu mat-menu-item><a routerLink='../sports' mat-raised-button color="accent" aria-label="Shop link">Sports and Fitness</a></menu>
-      <menu mat-menu-item><a routerLink='../sports' mat-raised-button color="accent" aria-label="Shop link">Vitamins and Supplements</a></menu>
-      <menu mat-menu-item><a routerLink='../sports' mat-raised-button color="accent" aria-label="Shop link">Superfoods</a></menu>
-      <menu mat-menu-item><a routerLink='../sports' mat-raised-button color="accent" aria-label="Shop link">Diet</a></menu>
-      <menu mat-menu-item><a routerLink='../sports' mat-raised-button color="accent" aria-label="Shop link">Food and Beverages</a></menu>
+      <menu mat-menu-item *ngFor='let cat of categoriesImported'><a routerLink='../{{cat.categoryName}}' mat-raised-button color="accent" aria-label="Shop link">{{cat.stringValue}}</a></menu>
     </ng-template>
   </mat-menu>
   </div>

@@ -1,4 +1,4 @@
-
+<app-navbar-categories-products></app-navbar-categories-products>
 <div class="main-full-width-container">
   <div class="product-details-container">
     <section class="top-details-container">
@@ -38,11 +38,11 @@
           </form>
           <section style="margin-left: 10px;">
             <span class="material-icons">verified</span><span class='commenter-name'>John</span><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis numquam eaque ullam, aperiam nemo nobis non deleniti hic vel pariatur est accusamus! Explicabo debitis aliquam laborum, esse ipsam reiciendis. Laborum!</p>
-            <span class="material-icons">verified</span><span class='commenter-name'>Michael</span><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, fuga dignissimos. Voluptates, laudantium quis. Ab tempora numquam, asperiores nam porro cupiditate officiis! Velit quam eligendi ad fugit animi numquam laudantium?</p>
+            <!-- <span class="material-icons">verified</span><span class='commenter-name'>Michael</span><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, fuga dignissimos. Voluptates, laudantium quis. Ab tempora numquam, asperiores nam porro cupiditate officiis! Velit quam eligendi ad fugit animi numquam laudantium?</p> -->
             <ng-template [ngIf]='productDetails.productDetails.reviews'>
               <div *ngFor="let item of productDetails.productDetails.reviews.arrayValue.values">
                 <span class="material-icons" style="color: #64dd17;">verified</span>
-                <span class='commenter-name'>Michael</span>
+                <span class='commenter-name'>{{item.mapValue.fields.username.stringValue}}</span>
                 <p>{{item.mapValue.fields.text.stringValue}}</p>
             </div>
             </ng-template>

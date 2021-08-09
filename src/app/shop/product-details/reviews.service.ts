@@ -39,7 +39,7 @@ export class ReviewsService {
 
   constructor(private http: HttpClient, private firestoreDatabase: AngularFirestore) { }
 
-  createPostReviewRequest(category, id, reviewText, rating) {
+  createPostReviewRequest(category, id, reviewText, rating, username) {
     const firestore = firebase.firestore();
     const col = firestore.collection(category)
     const query = col.where('index', '==', Number(id));
@@ -48,7 +48,7 @@ export class ReviewsService {
         querySnapshot.forEach((doc) => {
           var docRef = this.firestoreDatabase.collection(category).doc(doc.id);
           docRef.update({
-            reviews: firebase.firestore.FieldValue.arrayUnion({ text: reviewText, rating })
+            reviews: firebase.firestore.FieldValue.arrayUnion({ text: reviewText, rating, username })
           });
           console.log(doc.id, " => ", doc.data());
         });

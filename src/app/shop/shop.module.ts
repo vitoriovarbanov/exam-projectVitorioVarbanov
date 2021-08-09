@@ -16,10 +16,16 @@ import { CategoriesNavbarComponent } from './categories-navbar/categories-navbar
 import { AuthModule } from '../auth/auth.module';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductDetailsResolver } from '../product-details.resolver';
+import { StarRatingTopComponent } from './product-details/star-rating-top/star-rating-top.component';
+import { StarRatingBottomComponent } from './product-details/star-rating-bottom/star-rating-bottom.component';
+import { NavbarCategoriesProductsComponent } from './product-details/navbar-categories-products/navbar-categories-products.component';
+import { HerbsComponent } from './herbs/herbs.component';
+import { BeautyComponent } from './beauty/beauty.component';
+import { VitaminsComponent } from './vitamins/vitamins.component';
 
 
 @NgModule({
-  declarations: [ShopHomeComponent, FoodBeveragesComponent, SortByPipe, SortExpansionPanelComponent, ShoppingCartComponent, SportsComponent, DisplayCartItemsComponent, CategoriesNavbarComponent, ProductDetailsComponent],
+  declarations: [ShopHomeComponent, FoodBeveragesComponent, SortByPipe, SortExpansionPanelComponent, ShoppingCartComponent, SportsComponent, DisplayCartItemsComponent, CategoriesNavbarComponent, ProductDetailsComponent, StarRatingTopComponent, StarRatingBottomComponent, NavbarCategoriesProductsComponent, HerbsComponent, BeautyComponent, VitaminsComponent],
   imports: [
     CommonModule,
     ShopRoutingModule,

@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { FoodProducts } from './models/FoodProduts';
+import firebase from 'firebase/app'
+
 import { map, take } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
-import firebase from 'firebase/app'
-import { SportsFitnessProducts } from './models/SportsFitnessProducts';
+
+import { AllProductsBaseModel } from './models/AllProductsBaseModel';
 import { ProductsInCart } from './models/ProductsInCart';
 import { ProductDetails } from './models/ProductDetails';
 
@@ -20,18 +21,40 @@ export class ProductsService {
   constructor(private http: HttpClient, private firestoreDb: AngularFirestore) { }
 
   getFoodBeveragesProducsts() {
-    return this.http.get<FoodProducts>('https://firestore.googleapis.com/v1/projects/health-web-shop/databases/(default)/documents/foodbeverages')
+    return this.http.get<AllProductsBaseModel>('https://firestore.googleapis.com/v1/projects/health-web-shop/databases/(default)/documents/foodbeverages')
       .pipe(map(data => {
         return data['documents'].map(x => x['fields'])
       }))
   }
 
   getSportFitnessProducts() {
-    return this.http.get<SportsFitnessProducts>('https://firestore.googleapis.com/v1/projects/health-web-shop/databases/(default)/documents/sports')
+    return this.http.get<AllProductsBaseModel>('https://firestore.googleapis.com/v1/projects/health-web-shop/databases/(default)/documents/sports')
       .pipe(map(data => {
         return data['documents'].map(x => x['fields'])
       }))
   }
+
+  getHerbsProducts() {
+    return this.http.get<AllProductsBaseModel>('https://firestore.googleapis.com/v1/projects/health-web-shop/databases/(default)/documents/herbs')
+      .pipe(map(data => {
+        return data['documents'].map(x => x['fields'])
+      }))
+  }
+
+  getBeautyProducts() {
+    return this.http.get<AllProductsBaseModel>('https://firestore.googleapis.com/v1/projects/health-web-shop/databases/(default)/documents/beauty')
+      .pipe(map(data => {
+        return data['documents'].map(x => x['fields'])
+      }))
+  }
+
+  getVitaminsProducts() {
+    return this.http.get<AllProductsBaseModel>('https://firestore.googleapis.com/v1/projects/health-web-shop/databases/(default)/documents/vitamins')
+      .pipe(map(data => {
+        return data['documents'].map(x => x['fields'])
+      }))
+  }
+
 
   getItemDetails(category, productID) {
     return this.http.get<ProductDetails>(`https://firestore.googleapis.com/v1/projects/health-web-shop/databases/(default)/documents/${category}`)
