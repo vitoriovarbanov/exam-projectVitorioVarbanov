@@ -12,7 +12,7 @@
 
 <div class='main-content-div'>
   <ng-template [ngIf]='showCart'>
-    <app-shopping-cart [itemsInCart]='herbsProducts' [itemsSum]='sumInCart'></app-shopping-cart>
+    <app-shopping-cart [itemsInCart]='numberOfProducts' [itemsSum]='sumInCart'></app-shopping-cart>
   </ng-template>
 
 
@@ -28,14 +28,14 @@
 
       </div>
       <ng-template [ngIf]='products'>
-        <div class="card__img" style="background-image: url('../../../assets/shop-products/herbs/{{product.index.integerValue}}.jpg');"></div>
+        <div class="card__img" style="background-image: url('../../../assets/shop-products/{{category}}/{{product.index.integerValue}}.jpg');"></div>
       <a routerLink='{{product.index.integerValue}}' class="card_link">
-         <div class="card__img--hover" style="background-image: url('../../../assets/shop-products/herbs/{{product.index.integerValue}}.jpg');"></div>
+         <div class="card__img--hover" style="background-image: url('../../../assets/shop-products/{{category}}/{{product.index.integerValue}}.jpg');"></div>
        </a>
       </ng-template>
       <div class="card__info">
         <span class="card__category">{{product.productName.stringValue}}</span>
-        <h3 class="card__title">Herbs & Botanicals</h3>
+        <h3 class="card__title">Food & Beverages</h3>
         <button mat-flat-button color="primary" (click)='addItemsToCart(product.price.doubleValue,product.productName.stringValue,product.index)'>Add to cart</button>
         <span class="card__by"><a href="#" class="card__price" title="price" style="font-size: 28px; padding-left: 15px;">{{product.price.doubleValue}}$</a></span>
       </div>

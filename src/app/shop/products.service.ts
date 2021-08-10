@@ -20,41 +20,13 @@ export class ProductsService {
 
   constructor(private http: HttpClient, private firestoreDb: AngularFirestore) { }
 
-  getFoodBeveragesProducsts() {
-    return this.http.get<AllProductsBaseModel>('https://firestore.googleapis.com/v1/projects/health-web-shop/databases/(default)/documents/foodbeverages')
+  getAllItemsPerCategory(category) {
+    console.log(category)
+    return this.http.get<AllProductsBaseModel>(`https://firestore.googleapis.com/v1/projects/health-web-shop/databases/(default)/documents/${category}`)
       .pipe(map(data => {
         return data['documents'].map(x => x['fields'])
       }))
   }
-
-  getSportFitnessProducts() {
-    return this.http.get<AllProductsBaseModel>('https://firestore.googleapis.com/v1/projects/health-web-shop/databases/(default)/documents/sports')
-      .pipe(map(data => {
-        return data['documents'].map(x => x['fields'])
-      }))
-  }
-
-  getHerbsProducts() {
-    return this.http.get<AllProductsBaseModel>('https://firestore.googleapis.com/v1/projects/health-web-shop/databases/(default)/documents/herbs')
-      .pipe(map(data => {
-        return data['documents'].map(x => x['fields'])
-      }))
-  }
-
-  getBeautyProducts() {
-    return this.http.get<AllProductsBaseModel>('https://firestore.googleapis.com/v1/projects/health-web-shop/databases/(default)/documents/beauty')
-      .pipe(map(data => {
-        return data['documents'].map(x => x['fields'])
-      }))
-  }
-
-  getVitaminsProducts() {
-    return this.http.get<AllProductsBaseModel>('https://firestore.googleapis.com/v1/projects/health-web-shop/databases/(default)/documents/vitamins')
-      .pipe(map(data => {
-        return data['documents'].map(x => x['fields'])
-      }))
-  }
-
 
   getItemDetails(category, productID) {
     return this.http.get<ProductDetails>(`https://firestore.googleapis.com/v1/projects/health-web-shop/databases/(default)/documents/${category}`)

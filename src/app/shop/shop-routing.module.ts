@@ -3,40 +3,38 @@ import { RouterModule, Routes } from '@angular/router';
 import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard'
 
 import { ShopHomeComponent } from './shop-home/shop-home.component';
-import { FoodBeveragesComponent } from './food-beverages/food-beverages.component'
-import { SportsComponent } from './sports/sports.component';
+import { ProductsPerCategoryComponent } from './products-per-category/products-per-category.component'
 import { DisplayCartItemsComponent } from './display-cart-items/display-cart-items.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+//RESOLVERS
 import { ProductDetailsResolver } from '../product-details.resolver';
-import { HerbsComponent } from './herbs/herbs.component';
-import { BeautyComponent } from './beauty/beauty.component';
-import { VitaminsComponent } from './vitamins/vitamins.component';
+import { AllProductsByCategoryResolver } from '../all-products-by-category.resolver';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['auth/login']);
 
 const routes: Routes = [
   { path: '', component: ShopHomeComponent },
-  { path: 'foodbeverages', component: FoodBeveragesComponent },
+  { path: 'foodbeverages', component: ProductsPerCategoryComponent, resolve: { productDetails: AllProductsByCategoryResolver } },
   {
     path: 'foodbeverages/:id', component: ProductDetailsComponent, resolve: { productDetails: ProductDetailsResolver },
     canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
-  { path: 'sports', component: SportsComponent },
+  { path: 'sports', component: ProductsPerCategoryComponent, resolve: { productDetails: AllProductsByCategoryResolver } },
   {
     path: 'sports/:id', component: ProductDetailsComponent, resolve: { productDetails: ProductDetailsResolver },
     canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
-  { path: 'herbs', component: HerbsComponent },
+  { path: 'herbs', component: ProductsPerCategoryComponent, resolve: { productDetails: AllProductsByCategoryResolver } },
   {
     path: 'herbs/:id', component: ProductDetailsComponent, resolve: { productDetails: ProductDetailsResolver },
     canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
-  { path: 'beauty', component: BeautyComponent },
+  { path: 'beauty', component: ProductsPerCategoryComponent, resolve: { productDetails: AllProductsByCategoryResolver }  },
   {
     path: 'beauty/:id', component: ProductDetailsComponent, resolve: { productDetails: ProductDetailsResolver },
     canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
-  { path: 'vitamins', component: VitaminsComponent },
+  { path: 'vitamins', component: ProductsPerCategoryComponent, resolve: { productDetails: AllProductsByCategoryResolver } },
   {
     path: 'vitamins/:id', component: ProductDetailsComponent, resolve: { productDetails: ProductDetailsResolver },
     canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }

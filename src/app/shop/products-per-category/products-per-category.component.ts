@@ -1,31 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../products.service';
-import { FirebaseAuthService } from 'src/app/auth/firebase-auth.service';
-import { AllProductsBaseModel } from '../models/AllProductsBaseModel';
 import { PageEvent } from '@angular/material/paginator';
+import { FirebaseAuthService } from 'src/app/auth/firebase-auth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-herbs',
-  templateUrl: './herbs.component.html',
-  styleUrls: ['./herbs.component.css']
+  selector: 'app-products-per-category',
+  templateUrl: './products-per-category.component.html',
+  styleUrls: ['./products-per-category.component.css']
 })
-export class HerbsComponent implements OnInit {
+export class ProductsPerCategoryComponent implements OnInit {
   products
-  herbsProducts: number
+  numberOfProducts: number
   sumInCart: number;
   sortCriteria: string = 'default'
   showCart: boolean
+  category
 
-  constructor(private srvc: ProductsService, private authSrvc: FirebaseAuthService) {
-    this.srvc.getHerbsProducts()
-      .subscribe((data: AllProductsBaseModel) => {
-        this.products = data
-      })
+  constructor(private srvc: ProductsService, private authSrvc: FirebaseAuthService, private router: ActivatedRoute) {
+    this.products = this.router.snapshot.data.productDetails
+    this.category = this.router.snapshot.url[0].path
+
     this.srvc.productsInCart$.subscribe(data => {
-      this.herbsProducts = data
+      this.numberOfProducts = data
     })
-    this.authSrvc.signedIn$.subscribe(data=>{
-      console.log(data)
+    this.authSrvc.signedIn$.subscribe(data => {
       this.showCart = data
     })
   }
@@ -33,6 +32,7 @@ export class HerbsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // used to build an array of papers relevant at any given time
   lowValue: number = 0;
   highValue: number = 10;
   public getPaginatorData(event: PageEvent): PageEvent {
@@ -42,9 +42,9 @@ export class HerbsComponent implements OnInit {
   }
 
   addItemsToCart(priceOfItem,nameOfItem,productIndex) {
-    this.srvc.updateCart(priceOfItem,nameOfItem,productIndex,'herbs')
+    this.srvc.updateCart(priceOfItem,nameOfItem,productIndex,this.category)
     this.srvc.productsInCart$.subscribe(data=>{
-      this.herbsProducts = data
+      this.numberOfProducts = data
     })
     this.srvc.cartItemsSum$.subscribe(data=>{
       this.sumInCart = data
