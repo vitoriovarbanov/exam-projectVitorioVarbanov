@@ -20,6 +20,8 @@ import { StarRatingBottomComponent } from './product-details/star-rating-bottom/
 import { NavbarCategoriesProductsComponent } from './product-details/navbar-categories-products/navbar-categories-products.component';
 import { AllProductsByCategoryResolver } from '../all-products-by-category.resolver';
 import { ProductsPerCategoryComponent } from './products-per-category/products-per-category.component';
+import { DialogViewComponent } from './display-cart-items/dialog-view/dialog-view.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { ProductsPerCategoryComponent } from './products-per-category/products-p
     StarRatingTopComponent,
     StarRatingBottomComponent,
     NavbarCategoriesProductsComponent,
-    ProductsPerCategoryComponent
+    ProductsPerCategoryComponent,
+    DialogViewComponent,
+    CheckoutComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +46,7 @@ import { ProductsPerCategoryComponent } from './products-per-category/products-p
     AngularMaterialModule,
     HttpClientModule,
     AuthModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [ProductDetailsResolver, AllProductsByCategoryResolver]
 })

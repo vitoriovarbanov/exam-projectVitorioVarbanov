@@ -1,0 +1,20 @@
+<app-categories-navbar></app-categories-navbar>
+
+<div class="cart-background-container">
+  <div class="flex-content-container">
+    <section class="right-side-container">
+      <div class="order-summary">
+        <h1>YOUR ORDER SUMMARY</h1>
+
+        <h2>Thank you for choosing our shop! Our effor to provide quality products continues!</h2>
+
+          <h2>Total: {{total}}$</h2>
+      <button mat-flat-button color="primary"
+        (click)='emptyCart()' (click)="openSnackBar('Your order is on it\'s way!', 'Hide')">
+        Pay now
+      </button>
+      </div>
+    </section>
+  </div>
+
+</div>

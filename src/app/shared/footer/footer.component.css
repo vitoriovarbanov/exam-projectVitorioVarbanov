@@ -1,0 +1,44 @@
+.mat-toolbar{
+  border-top: 1px solid greenyellow;
+}
+
+.example-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer-right {
+  flex: 1 2 1;
+  margin-left: 20px;
+}
+
+a{
+  color: white;
+  text-decoration: none;
+  box-shadow: none;
+}
+
+.example-icon-top{
+  display: none;
+}
+
+.logo{
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 555px) {
+  .example-icon-top{
+    display: initial;
+  }
+  .favourite{
+    display: none;
+  }
+  .right-menu{
+    display: none;
+  }
+}

@@ -1,4 +1,5 @@
 <app-navbar-categories-products></app-navbar-categories-products>
+
 <div class="main-full-width-container">
   <div class="product-details-container">
     <section class="top-details-container">
@@ -13,9 +14,15 @@
       <div class="details-box">
         <h1 style="margin: 0;">{{productDetails.productDetails.productName.stringValue}}</h1>
         <h3 style="margin: 0;">{{productDetails.productDetails.price.doubleValue}}$</h3>
+        <ng-template [ngIf]='showCart'>
+          <div class="cart-container">
+            <app-shopping-cart [itemsInCart]='numberOfProducts' [itemsSum]='sumInCart'></app-shopping-cart>
+          </div>
+        </ng-template>
         <h2 style="margin: 0;">Description</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        <button mat-raised-button color="primary">Add to cart</button>
+        <button mat-raised-button color="primary" (click)='addItemsToCart(productDetails.productDetails.price.doubleValue,
+        productDetails.productDetails.productName.stringValue,productDetails.productDetails.index)'>Add to cart</button>
       </div>
 
     </section>

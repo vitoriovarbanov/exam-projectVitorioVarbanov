@@ -9,6 +9,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 //RESOLVERS
 import { ProductDetailsResolver } from '../product-details.resolver';
 import { AllProductsByCategoryResolver } from '../all-products-by-category.resolver';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['auth/login']);
 
@@ -39,7 +40,18 @@ const routes: Routes = [
     path: 'vitamins/:id', component: ProductDetailsComponent, resolve: { productDetails: ProductDetailsResolver },
     canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
-  { path: 'cart', component: DisplayCartItemsComponent }
+  { path: 'superfoods', component: ProductsPerCategoryComponent, resolve: { productDetails: AllProductsByCategoryResolver } },
+  {
+    path: 'superfoods/:id', component: ProductDetailsComponent, resolve: { productDetails: ProductDetailsResolver },
+    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
+  },
+  { path: 'diet', component: ProductsPerCategoryComponent, resolve: { productDetails: AllProductsByCategoryResolver } },
+  {
+    path: 'diet/:id', component: ProductDetailsComponent, resolve: { productDetails: ProductDetailsResolver },
+    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
+  },
+  { path: 'cart', component: DisplayCartItemsComponent },
+  { path: 'checkout', component: CheckoutComponent }
 ];
 
 @NgModule({

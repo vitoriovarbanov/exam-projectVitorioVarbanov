@@ -1,32 +1,28 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../products.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AngularFirestore } from '@angular/fire/firestore';
 import firebase from 'firebase/app'
 import { BehaviorSubject } from 'rxjs';
-import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-display-cart-items',
-  templateUrl: './display-cart-items.component.html',
-  styleUrls: ['./display-cart-items.component.css']
+  selector: 'app-checkout',
+  templateUrl: './checkout.component.html',
+  styleUrls: ['./checkout.component.css']
 })
-export class DisplayCartItemsComponent implements OnInit {
-  displayedColumns: string[] = ['products', 'price', 'quantity', 'total'];
+export class CheckoutComponent implements OnInit {
   itemsInCart
   subtotalSum$ = new BehaviorSubject(0)
+  total
 
-  constructor(private srvc: ProductsService, private firestoreDb: AngularFirestore,
-    private _snackBar: MatSnackBar) {
-    this.itemsInCart = this.srvc.getUserCurrentItemsInCart()
-
-    this.srvc.validateCartSubtotalSum().subscribe(data => {
-      this.subtotalSum$.next(data)
-    })
-
-  }
+  constructor(private srvc: ProductsService,private firestoreDb: AngularFirestore,
+    private _snackBar: MatSnackBar, private router: Router) { }
 
   ngOnInit(): void {
+      this.total = localStorage.getItem('cartSum')
+      this.total = Number(this.total) + 20;
+      this.total = Number(this.total.toFixed(2))
   }
 
   emptyCart() {
@@ -45,10 +41,15 @@ export class DisplayCartItemsComponent implements OnInit {
       });
     this.itemsInCart = this.srvc.emptyCartFunctionUpdate()
     this.subtotalSum$.next(0)
+    setTimeout(()=>{
+      window.location.href = 'http://localhost:4200/shop'
+    },2000)
+
   }
 
   openSnackBar(message: string, action) {
     this._snackBar.open(message, action);
   }
+
 
 }

@@ -11,16 +11,6 @@
   margin: 0 auto;
 }
 
-.left-side-container {
-  min-width: 330px;
-  width: 50%;
-}
-
-.left-side-container img{
-  transform: skew(3deg, 3deg);
-  border-radius: 3px;
-}
-
 .mat-elevation-z8 {
   min-width: 330px;
   width: 100%;
@@ -39,7 +29,7 @@
 .right-side-container {
   margin-left: 2px;
   min-width: 330px;
-  width: 50%;
+  width: 100%;
 }
 
 .order-summary {
